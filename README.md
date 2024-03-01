@@ -59,8 +59,9 @@ El contexto del problema a solucionar es el de la representacion de un  arbol ge
    Agregar hecho sobre una nueva persona:
    Selecciona la opción 2 en el menú y sigue las instrucciones para ingresar el nombre de la persona y la descripción del hecho.
    
-   Nombre de la Persona: Pablo
-   Descripción del Hecho: es hijo de Marta y José.
+   *Nombre de la Persona:* Pablo
+   *Descripción del Hecho:* es hijo de Marta y José.
+   
    El sistema agregará el hecho "Pablo: es hijo de Marta y José" a la base de conocimientos.
    
    2. Crear Nueva Regla
@@ -68,8 +69,9 @@ El contexto del problema a solucionar es el de la representacion de un  arbol ge
    Agregar regla sobre una nueva relación familiar:
    Selecciona la opción 3 en el menú y sigue las instrucciones para ingresar la relación y los elementos de la regla.
    
-   Relación: nieto
-   Elementos: Ana, Marta, José
+   *Relación:* nieto
+   *Elementos:* Ana, Marta, José
+   
    El sistema agregará la regla "nieto de Ana y José es Marta" a la base de conocimientos.
 
 
