@@ -34,3 +34,20 @@ El contexto del problema a solucionar es el de la representacion de un  arbol ge
 
    ```bash
    git clone https://github.com/tu-usuario/tu-repositorio.git
+
+2. Ejecuta el programa:
+
+   ```bash
+   python sistema_experto.py
+
+3. Selecciona las opciones del menú según tus necesidades.
+
+   ```bash
+      --- Menú ---
+      1. Mostrar base de conocimientos
+      2. Agregar nuevo hecho
+      3. Agregar nueva regla
+      4. Consultar con encadenamiento hacia adelante
+      5. Reiniciar hechos y reglas a valores predeterminados
+      6. Salir
+      Ingrese el número de la opción deseada: 
