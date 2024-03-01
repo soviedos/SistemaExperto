@@ -16,11 +16,21 @@ Los detalles sobre el sistema son los siguientes:
 
 El contexto del problema a solucionar es el de la representacion de un  arbol genealogico.
 
-El menu cuenta con las siguientes opciones:
-  1. Mostrar base de conocimientos
-  2. Agregar nuevo hecho
-  3. Agregar nueva regla
-  4. Eliminar hecho
-  5. Eliminar regla
-  6. Consultar con encadenamiento hacia adelante
-  7. Salir
+## Funcionalidades
+
+- Mostrar la base de conocimientos actualizada, incluyendo hechos y reglas.
+- Agregar nuevos hechos a la base de conocimientos.
+- Agregar nuevas reglas a la base de conocimientos.
+- Consultar relaciones utilizando encadenamiento hacia adelante.
+- Reiniciar los hechos y las reglas a los valores predeterminados.
+
+## Requisitos
+
+- Python 3.x
+
+## Instrucciones de Uso
+
+1. Clona este repositorio en tu máquina local:
+
+   ```bash
+   git clone https://github.com/tu-usuario/tu-repositorio.git
