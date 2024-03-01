@@ -28,7 +28,7 @@ El contexto del problema a solucionar es el de la representacion de un  arbol ge
 
 - Python 3.x
 
-## Instrucciones de Uso
+## Instalación del sistema
 
 1. Clona este repositorio en tu máquina local:
 
@@ -51,3 +51,26 @@ El contexto del problema a solucionar es el de la representacion de un  arbol ge
       5. Reiniciar hechos y reglas a valores predeterminados
       6. Salir
       Ingrese el número de la opción deseada: 
+
+## Ejemplos de Uso
+
+   1. Crear Nuevo Hecho
+      
+   Agregar hecho sobre una nueva persona:
+   Selecciona la opción 2 en el menú y sigue las instrucciones para ingresar el nombre de la persona y la descripción del hecho.
+   
+   Nombre de la Persona: Pablo
+   Descripción del Hecho: es hijo de Marta y José.
+   El sistema agregará el hecho "Pablo: es hijo de Marta y José" a la base de conocimientos.
+   
+   2. Crear Nueva Regla
+      
+   Agregar regla sobre una nueva relación familiar:
+   Selecciona la opción 3 en el menú y sigue las instrucciones para ingresar la relación y los elementos de la regla.
+   
+   Relación: nieto
+   Elementos: Ana, Marta, José
+   El sistema agregará la regla "nieto de Ana y José es Marta" a la base de conocimientos.
+
+
+
