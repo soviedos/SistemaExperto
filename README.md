@@ -54,23 +54,34 @@ El contexto del problema a solucionar es el de la representacion de un  arbol ge
 
 ## Ejemplos de Uso
 
-   1. Crear Nuevo Hecho
+   1. Mostrar base de conocimientos
+
+   Muestra información almacenada de los hechos y las reglas donde se inicia con 5 valores predeterminados.
+
+   2. Agregar Nuevo Hecho
       
    Agregar hecho sobre una nueva persona:
    Selecciona la opción 2 en el menú y sigue las instrucciones para ingresar el nombre de la persona y la descripción del hecho.
    
    **Nombre de la Persona:** Pablo
-   **Descripción del Hecho:** es hijo de Marta y José.
+   **Descripción del Hecho:** es hijo de Marta y Jose.
    
-   El sistema agregará el hecho "Pablo: es hijo de Marta y José" a la base de conocimientos.
+   El sistema agregará el hecho "Pablo: es hijo de Marta y Jose" a la base de conocimientos.
    
-   2. Crear Nueva Regla
+   3. Agregar Nueva Regla
       
    Agregar regla sobre una nueva relación familiar:
    Selecciona la opción 3 en el menú y sigue las instrucciones para ingresar la relación y los elementos de la regla.
    
    **Relación:** nieto
-   **Elementos:** Ana, Marta, José
+   **Elementos:** Ana, Marta, Jose
    
-   El sistema agregará la regla "nieto de Ana y José es Marta" a la base de conocimientos.
+   El sistema agregará la regla "nieto de Ana y Jose es Marta" a la base de conocimientos.
 
+   4. Consultar con Encadenamiento hacia Adelante
+      
+   Selecciona la opción 4 en el menú, ingresa la consulta y observa el resultado de la inferencia.
+   
+   **Consulta**: hijo
+   
+   El sistema realizará el encadenamiento hacia adelante para inferir nuevas relaciones basadas en los hechos y reglas existentes. Por ejemplo, si existen hechos y reglas que implican la relación "hijo", el sistema mostrará la inferencia exitosa.
