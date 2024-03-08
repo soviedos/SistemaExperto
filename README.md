@@ -1,4 +1,14 @@
-# SistemaExperto
+## SistemaExperto
+## Práctica 1 - Sistemas Basados en Conocimiento
+## Maestría Ing. Software - CENFOTEC
+
+## Estudiantes:
+
+    Sergio Oviedo
+    Duncan Zenteno
+
+## Requerimientos
+
 Sistema Experto que permite hacer consultas a una base de conocimientos y a una base de hechos.
 El sistema debe ser inicializado y permitirle al usuario integrar nuevos hechos y reglas.
 
@@ -22,11 +32,11 @@ El contexto del problema a solucionar es el de la representacion de un  arbol ge
 - Agregar nuevos hechos a la base de conocimientos.
 - Agregar nuevas reglas a la base de conocimientos.
 - Consultar relaciones utilizando encadenamiento hacia adelante.
-- Reiniciar los hechos y las reglas a los valores predeterminados.
 
 ## Requisitos
 
-- Python 3.x
+- Python 3.9
+- Logpy
 
 ## Instalación del sistema
 
@@ -44,21 +54,19 @@ El contexto del problema a solucionar es el de la representacion de un  arbol ge
 
    ```bash
       --- Menú ---
-      1. Mostrar base de conocimientos
-      2. Agregar nuevo hecho
-      3. Agregar nueva regla
-      4. Consultar con encadenamiento hacia adelante
-      5. Reiniciar hechos y reglas a valores predeterminados
+      1. Consultar hechos
+      2. Agregar hecho
+      3. Agregar regla
       6. Salir
       Ingrese el número de la opción deseada: 
 
 ## Ejemplos de Uso
 
-   1. Mostrar base de conocimientos
+   1. Consultar hechos
 
    Muestra información almacenada de los hechos y las reglas donde se inicia con 5 valores predeterminados.
 
-   2. Agregar Nuevo Hecho
+   2. Agregar Hecho
       
    Agregar hecho sobre una nueva persona:
    Selecciona la opción 2 en el menú y sigue las instrucciones para ingresar el nombre de la persona y la descripción del hecho.
@@ -68,7 +76,7 @@ El contexto del problema a solucionar es el de la representacion de un  arbol ge
    
    El sistema agregará el hecho "Pablo: es hijo de Marta y Jose" a la base de conocimientos.
    
-   3. Agregar Nueva Regla
+   3. Agregar Nueva Regla (En construccion)
       
    Agregar regla sobre una nueva relación familiar:
    Selecciona la opción 3 en el menú y sigue las instrucciones para ingresar la relación y los elementos de la regla.
@@ -77,11 +85,3 @@ El contexto del problema a solucionar es el de la representacion de un  arbol ge
    **Elementos:** Ana, Marta, Jose
    
    El sistema agregará la regla "nieto de Ana y Jose es Marta" a la base de conocimientos.
-
-   4. Consultar con Encadenamiento hacia Adelante
-      
-   Selecciona la opción 4 en el menú, ingresa la consulta y observa el resultado de la inferencia.
-   
-   **Consulta**: hijo
-   
-   El sistema realizará el encadenamiento hacia adelante para inferir nuevas relaciones basadas en los hechos y reglas existentes. Por ejemplo, si existen hechos y reglas que implican la relación "hijo", el sistema mostrará la inferencia exitosa.
