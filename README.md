@@ -1,13 +1,13 @@
 ## SistemaExperto
-##Práctica 1 - Sistemas Basados en Conocimiento
-##Maestría Ing. Software - CENFOTEC
+## Práctica 1 - Sistemas Basados en Conocimiento
+## Maestría Ing. Software - CENFOTEC
 
-##Estudiantes:
+## Estudiantes:
 
     Sergio Oviedo
     Duncan Zenteno
 
-##Requerimientos
+## Requerimientos
 
 Sistema Experto que permite hacer consultas a una base de conocimientos y a una base de hechos.
 El sistema debe ser inicializado y permitirle al usuario integrar nuevos hechos y reglas.
