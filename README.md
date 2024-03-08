@@ -1,6 +1,6 @@
-### SistemaExperto
-###Práctica 1 - Sistemas Basados en Conocimiento
-###Maestría Ing. Software - CENFOTEC
+## SistemaExperto
+##Práctica 1 - Sistemas Basados en Conocimiento
+##Maestría Ing. Software - CENFOTEC
 
 ##Estudiantes:
 
