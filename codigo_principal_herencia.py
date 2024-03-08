@@ -1,120 +1,155 @@
 import json
+from logpy import Relation, facts, run, conde, var, eq
 
-class SistemaExperto:
-    def __init__(self):
-        self.base_hechos = self.cargar_base_hechos()
-        self.base_reglas = self.cargar_base_reglas()
+if __name__=='__main__':
+    padre = Relation()
+    madre = Relation()
+    hermano = Relation()
+    hermana = Relation()
+    hijo = Relation()
+    hija = Relation()
+    esposo = Relation()
+    esposa = Relation()
+    ascendencia = Relation()
+    descendencia = Relation()
+    pareja = Relation()
+    
+    with open('relaciones.json') as f:
+        d = json.loads(f.read())
 
-        # Valores predeterminados solo si la base está vacía
-        if not self.base_hechos or not self.base_reglas:
-            self.inicializar_valores_predeterminados()
+    for item in d['padre']:
+        facts(padre, (list(item.keys())[0], list(item.values())[0]))
 
-    def inicializar_valores_predeterminados(self):
-        valores_predeterminados_hechos = {
-            "Juan": "hijo de Karla y Pedro",
-            "Ana": "hija de Karla y Pedro",
-            "Karla": "esposa de Pedro",
-            "Pedro": "esposo de Karla",
-            "Carlos": "hijo de Ana y Juan"
-        }
-        self.base_hechos = valores_predeterminados_hechos
-        self.guardar_base_hechos()
+    for item in d['madre']:
+        facts(madre, (list(item.keys())[0], list(item.values())[0]))
 
-        valores_predeterminados_reglas = [
-            ("hijo", ["Juan", "Karla", "Pedro"]),
-            ("hija", ["Ana", "Karla", "Pedro"]),
-            ("esposo", ["Pedro", "Karla"]),
-            ("esposa", ["Karla", "Pedro"]),
-            ("hermano", ["Carlos", "Ana", "Juan"])
-        ]
-        self.base_reglas = valores_predeterminados_reglas
-        self.guardar_base_reglas()
+    for item in d['hermano']:
+        facts(hermano, (list(item.keys())[0], list(item.values())[0]))
 
-    def mostrar_base_conocimientos(self):
-        print("Base de Hechos:")
-        for hecho, descripcion in self.base_hechos.items():
-            print(f"{hecho}: {descripcion}")
+    for item in d['hermana']:
+        facts(hermana, (list(item.keys())[0], list(item.values())[0]))
 
-        print("\nBase de Reglas:")
-        for regla, elementos in self.base_reglas:
-            print(f"{regla} de {' y '.join(elementos[1:])} es {elementos[0]}")
+    for item in d['hijo']:
+        facts(hijo, (list(item.keys())[0], list(item.values())[0]))
 
-    def agregar_hecho(self, persona, descripcion):
-        self.base_hechos[persona] = descripcion
-        print(f"Hecho agregado: {persona}: {descripcion}")
-        self.guardar_base_hechos()
+    for item in d['hija']:
+        facts(hija, (list(item.keys())[0], list(item.values())[0]))
 
-    def agregar_regla(self, relacion, elementos):
-        self.base_reglas.append((relacion, elementos))
-        print(f"Regla agregada: {relacion} de {' y '.join(elementos[1:])} es {elementos[0]}")
-        self.guardar_base_reglas()
+    for item in d['esposo']:
+        facts(esposo, (list(item.keys())[0], list(item.values())[0]))
+
+    for item in d['esposa']:
+        facts(esposa, (list(item.keys())[0], list(item.values())[0]))
+
+    for item in d['ascendencia']:
+        facts(ascendencia, (list(item.keys())[0], list(item.values())[0]))
+
+    for item in d['descendencia']:
+        facts(descendencia, (list(item.keys())[0], list(item.values())[0]))
+
+    for item in d['pareja']:
+        facts(pareja, (list(item.keys())[0], list(item.values())[0]))
+
+    x = var()
+
+    # Verifica si 'x' es padre de 'y'
+    def padres(x, y):
+        return conde([padre(x, y)])
+    
+    # Verifica si 'x' es madre de 'y'
+    def madres(x, y):
+        return conde([madre(x, y)])
+
+    # Verifica si 'x' & 'y' son hermanos
+    def hermanos(x, y):
+        temp = var()
+        return conde(padres(temp, x), padres(temp, y), [madres(temp, x), madres(temp, y)])
+    
+    # Verifica si 'x' es hijo de 'y'
+    def hijos(x, y):
+        return conde([padre(x, y)], [madre(x, y)])
+    
+    def esposos(x, y):
+        return conde([esposo(x, y)], [esposa(x, y)])
+    
+    def agregar_hecho(x, y, z):
+        with open('relaciones.json', 'r') as file:
+            data = json.load(file)
         
-    def encadenamiento_hacia_adelante(self, consulta):
-        for regla, elementos in self.base_reglas:
-            if regla == consulta:
-                if all(elemento in self.base_hechos for elemento in elementos[1:]):
-                    nuevo_hecho = f"{elementos[0]} es {consulta} de {' y '.join(elementos[1:])}"
-                    self.base_hechos[elementos[0]] = nuevo_hecho
-                    print(f"Inferencia exitosa: {nuevo_hecho}")
-                    self.guardar_base_hechos()
-                    return True
-        print(f"No se pudo inferir {consulta}")
-        return False
+        data[z].append({x: y})
+        
+        with open('relaciones.json', 'w') as file:
+            json.dump(data, file, indent=2)
+        
+        print(f"Se agrego el siguiente hecho: {x} es {z} de {y}.")
 
-    def cargar_base_hechos(self):
-        try:
-            with open("base_hechos.json", "r") as file:
-                return json.load(file)
-        except FileNotFoundError:
-            return {}
+    def consultar(relacion, nombre):
+        x = var()
+        if relacion == 'padre':
+            salida = run(0, x, padres(nombre, x))
+            print(nombre.capitalize() + " es padre de: ")
+            for item in salida:
+                print(item.capitalize())
+            print("\n")             
+        elif relacion == 'madre':
+            salida = run(0, x, madres(nombre, x))
+            print(nombre.capitalize() + " es madre de: ")
+            for item in salida:
+                print(item.capitalize())
+            print("\n")     
+        elif relacion == 'hermano' or relacion == 'hermana':
+            salida = run(0, x, hermanos(x, nombre))
+            hermano = [x for x in salida if x != nombre]
+            print(nombre.capitalize() + " es hermano(a): ")
+            for item in hermano:
+                print(item.capitalize())
+            print("\n") 
+        elif relacion == 'hijo' or relacion == 'hija':
+            salida = run(0, x, hijos(x, nombre))
+            print(nombre.capitalize() + " es hijo(a) de:")
+            for item in salida:
+                print(item.capitalize())
+            print("\n")  
+        elif relacion == 'esposo' or relacion == 'esposa':
+            salida = run(0, x, esposos(nombre, x))
+            print(nombre.capitalize() + " es esposo(a) de:")
+            for item in salida:
+                print(item.capitalize())
+            print("\n")  
 
-    def cargar_base_reglas(self):
-        try:
-            with open("base_reglas.json", "r") as file:
-                return json.load(file)
-        except FileNotFoundError:
-            return []
+    def salir():
+        print("Gracias por usar el sistema")
+        exit(0)
 
-    def guardar_base_hechos(self):
-        with open("base_hechos.json", "w") as file:
-            json.dump(self.base_hechos, file)
+    def mostrar_menu():
+        while True:
+            print("\nBienvenido al Sistema Experto")
+            print("1. Consultar hechos")
+            print("2. Agregar hecho")
+            print("3. Agregar regla (En construccion)")
+            print("4. Salir")
+            opcion = input("Por favor, elige una opción: ")
 
-    def guardar_base_reglas(self):
-        with open("base_reglas.json", "w") as file:
-            json.dump(self.base_reglas, file)
+            if opcion == '1':
+                nombre = input("Por favor, introduzca el nombre de la persona: ").lower()
+                relacion = input("Por favor, introduzca la relacion que quiere consultar: ").lower()
+                consultar(relacion, nombre)
 
-# Ejemplo de uso
-sistema = SistemaExperto()
+            elif opcion == '2':
+                z = input("Ingresar el nombre del hecho 'z' (padre, madre, hijo, hija, etc): ")
+                x = input("Ingresa el nombre de la persona 'x' (Ex: 'x' es madre de 'y'): ")
+                y = input("Ingresa el nombre la persona 'y' (Ex: 'x' es madre de 'y'): ")
+                agregar_hecho(x, y, z)
+                
+            elif opcion == '3':
+                salir()
+            
+            elif opcion == '4':
+                salir()
 
-while True:
-    print("\n--- Menú ---")
-    print("1. Mostrar base de conocimientos")
-    print("2. Agregar nuevo hecho")
-    print("3. Agregar nueva regla")
-    print("4. Consultar con encadenamiento hacia adelante")
-    print("5. Reiniciar hechos y reglas a valores predeterminados")
-    print("6. Salir")
+            else:
+                print("Opción no válida, por favor intenta de nuevo")
 
-    opcion = input("Ingrese el número de la opción deseada: ")
 
-    if opcion == "1":
-        sistema.mostrar_base_conocimientos()
-    elif opcion == "2":
-        persona = input("Ingrese el nombre de la persona: ")
-        descripcion = input("Ingrese la descripción del hecho: ")
-        sistema.agregar_hecho(persona, descripcion)
-    elif opcion == "3":
-        relacion = input("Ingrese la relación (ej. hijo, hija, esposo): ")
-        elementos = input("Ingrese los elementos de la regla separados por comas (ej. Juan, María, Pedro): ").split(", ")
-        sistema.agregar_regla(relacion, elementos)
-    elif opcion == "4":
-        consulta = input("Ingrese la consulta a inferir: ")
-        sistema.encadenamiento_hacia_adelante(consulta)
-    elif opcion == "5":
-        sistema.inicializar_valores_predeterminados()
-        print("Hechos y reglas reiniciados a los valores predeterminados.")
-    elif opcion == "6":
-        print("Saliendo del sistema. ¡Hasta luego!")
-        break
-    else:
-        print("Opción no válida. Inténtelo de nuevo.")
+    if __name__ == '__main__':
+        mostrar_menu()
