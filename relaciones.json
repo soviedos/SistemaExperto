@@ -1,0 +1,59 @@
+{
+  "padre": [
+    {
+      "juan": "guillermo"
+    },
+    {
+      "juan": "david"
+    },
+    {
+      "juan": "adam"
+    },
+    {
+      "guillermo": "stephanie"
+    },
+    {
+      "david": "julia"
+    },
+    {
+      "david": "pedro"
+    }
+  ],
+  "madre": [
+    {
+      "megan": "guillermo"
+    },
+    {
+      "megan": "david"
+    },
+    {
+      "megan": "adam"
+    },
+    {
+      "emma": "stephanie"
+    },
+    {
+      "olivia": "julia"
+    },
+    {
+      "olivia": "pedro"
+    }
+  ],
+  "hermano": [],
+  "hermana": [],
+  "hijo": [],
+  "hija": [],
+  "esposo": [
+    {
+      "guillermo": "megan"
+    }
+  ],
+  "esposa": [
+    {
+      "megan": "guillermo"
+    }
+  ],
+  "ascendencia": [],
+  "descendencia": [],
+  "pareja": []
+}
