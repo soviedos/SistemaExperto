@@ -151,8 +151,11 @@ Para agregar un hecho, elija la primera opción y siga las indicaciones.
 Ejemplo:
     ```bash
     Ingresar el nombre del hecho 'z' (padre, madre, hijo, hija, etc): padre
+    
     Ingresa el nombre de la persona 'x' (Ex: 'x' es madre de 'y'): roberto
+    
     Ingresa el nombre la persona 'y' (Ex: 'x' es madre de 'y'): joel 
+    
     Se agrego el siguiente hecho: roberto es padre de joel.
     ```
     ```bash
