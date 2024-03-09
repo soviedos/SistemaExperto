@@ -3,12 +3,10 @@
 ## Maestría Ing. Software - CENFOTEC
 
 ## Estudiantes:
-
-    Sergio Oviedo
-    Duncan Zenteno
+- Sergio Oviedo
+- Duncan Zenteno
 
 ## Requerimientos
-
 Sistema Experto que permite hacer consultas a una base de conocimientos y a una base de hechos.
 El sistema debe ser inicializado y permitirle al usuario integrar nuevos hechos y reglas.
 
@@ -27,61 +25,143 @@ Los detalles sobre el sistema son los siguientes:
 El contexto del problema a solucionar es el de la representacion de un  arbol genealogico.
 
 ## Funcionalidades
-
-- Mostrar la base de conocimientos actualizada, incluyendo hechos y reglas.
-- Agregar nuevos hechos a la base de conocimientos.
-- Agregar nuevas reglas a la base de conocimientos.
-- Consultar relaciones utilizando encadenamiento hacia adelante.
+- Consultar hechos
+- Agregar hecho
 
 ## Requisitos
-
 - Python 3.9
 - Logpy
 
 ## Instalación del sistema
-
 1. Clona este repositorio en tu máquina local:
-
    ```bash
-   git clone https://github.com/tu-usuario/tu-repositorio.git
+   git clone https://github.com/soviedos/SistemaExperto.git
+   ```
+    
+2. Revisar el archivo relaciones.json el cual tiene los hechos predeterminados:
+    ```json
+    {
+      "padre": [
+        {
+          "juan": "guillermo"
+        },
+        {
+          "juan": "david"
+        },
+        {
+          "juan": "adam"
+        },
+        {
+          "guillermo": "stephanie"
+        },
+        {
+          "david": "julia"
+        },
+        {
+          "david": "pedro"
+        },
+        {
+          "roberto": "joel"
+        }
+      ],
+      "madre": [
+        {
+          "megan": "guillermo"
+        },
+        {
+          "megan": "david"
+        },
+        {
+          "megan": "adam"
+        },
+        {
+          "emma": "stephanie"
+        },
+        {
+          "olivia": "julia"
+        },
+        {
+          "olivia": "pedro"
+        }
+      ],
+      "hermano": [],
+      "hermana": [],
+      "hijo": [
+        {
+          "joel": "roberto"
+        }
+      ],
+      "hija": [
+        {
+          "claudia": "olivia"
+        }
+      ],
+      "esposo": [
+        {
+          "guillermo": "megan"
+        }
+      ],
+      "esposa": [
+        {
+          "megan": "guillermo"
+        }
+      ],
+      "ascendencia": [],
+      "descendencia": [],
+      "pareja": []
+    }
+    ```
 
-2. Ejecuta el programa:
-
+3. Ejecuta el programa:
    ```bash
    python sistema_experto.py
+   ```
 
-3. Selecciona las opciones del menú según tus necesidades.
-
+4. Selecciona las opciones del menú según tus necesidades.
    ```bash
-      --- Menú ---
-      1. Consultar hechos
-      2. Agregar hecho
-      3. Agregar regla
-      6. Salir
-      Ingrese el número de la opción deseada: 
+    Bienvenido al Sistema Experto
+    1. Consultar hechos
+    2. Agregar hecho
+    3. Agregar regla (En construccion)
+    4. Salir
+    Por favor, elige una opción:
+   ```
 
-## Ejemplos de Uso
+## Ejemplos
+### 1. Consultar hechos
+Actualmente el sistema solo soporta hechos de padre, madre, hijo, hija, hermano, hermana, esposo, esposa. Para consultar hechos, elija la primera opción y siga las indicaciones.
+Ejemplos: 
+    ```bash
+    Por favor, introduzca el nombre de la persona: juan
+    Por favor, introduzca la relacion que quiere consultar: padre
+    Juan es padre de: 
+    David
+    ```
+    ```bash
+    Por favor, introduzca el nombre de la persona: guillermo
+    Por favor, introduzca la relacion que quiere consultar: hermano
+    Guillermo es hermano(a): 
+    Adam
+    David
+    ```
 
-   1. Consultar hechos
+### 2. Agregar hecho    
+Para agregar un hecho, elija la primera opción y siga las indicaciones.
+ 
+Ejemplo:
+    ```bash
+    Ingresar el nombre del hecho 'z' (padre, madre, hijo, hija, etc): padre
+    Ingresa el nombre de la persona 'x' (Ex: 'x' es madre de 'y'): roberto
+    Ingresa el nombre la persona 'y' (Ex: 'x' es madre de 'y'): joel 
+    Se agrego el siguiente hecho: roberto es padre de joel.
+    ```
+    ```bash
+    Ingresar el nombre del hecho 'z' (padre, madre, hijo, hija, etc): hijo
+    Ingresa el nombre de la persona 'x' (Ex: 'x' es madre de 'y'): joel
+    Ingresa el nombre la persona 'y' (Ex: 'x' es madre de 'y'): roberto
+    Se agrego el siguiente hecho: joel es hijo de roberto.
+    ```
+    
+### 4. Salir
+Para salir del sistema.
 
-   Muestra información almacenada de los hechos y las reglas donde se inicia con 5 valores predeterminados.
-
-   2. Agregar Hecho
-      
-   Agregar hecho sobre una nueva persona:
-   Selecciona la opción 2 en el menú y sigue las instrucciones para ingresar el nombre de la persona y la descripción del hecho.
-   
-   **Nombre de la Persona:** Pablo
-   **Descripción del Hecho:** es hijo de Marta y Jose.
-   
-   El sistema agregará el hecho "Pablo: es hijo de Marta y Jose" a la base de conocimientos.
-   
-   3. Agregar Nueva Regla (En construccion)
-      
-   Agregar regla sobre una nueva relación familiar:
-   Selecciona la opción 3 en el menú y sigue las instrucciones para ingresar la relación y los elementos de la regla.
-   
-   **Relación:** nieto
-   **Elementos:** Ana, Marta, Jose
-   
-   El sistema agregará la regla "nieto de Ana y Jose es Marta" a la base de conocimientos.
