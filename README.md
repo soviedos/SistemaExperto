@@ -131,39 +131,32 @@ El contexto del problema a solucionar es el de la representacion de un  arbol ge
 ### 1. Consultar hechos
 Actualmente el sistema solo soporta hechos de padre, madre, hijo, hija, hermano, hermana, esposo, esposa. Para consultar hechos, elija la primera opción y siga las indicaciones.
 Ejemplos: 
-    ```bash
+
     Por favor, introduzca el nombre de la persona: juan
     Por favor, introduzca la relacion que quiere consultar: padre
     Juan es padre de: 
     David
-    ```
-    ```bash
+    
     Por favor, introduzca el nombre de la persona: guillermo
     Por favor, introduzca la relacion que quiere consultar: hermano
     Guillermo es hermano(a): 
     Adam
     David
-    ```
-
+    
 ### 2. Agregar hecho    
 Para agregar un hecho, elija la primera opción y siga las indicaciones.
  
 Ejemplo:
-    ```bash
     
     Ingresar el nombre del hecho 'z' (padre, madre, hijo, hija, etc): padre
-    
     Ingresa el nombre de la persona 'x' (Ex: 'x' es madre de 'y'): roberto
-    
     Ingresa el nombre la persona 'y' (Ex: 'x' es madre de 'y'): joel 
-    
     Se agrego el siguiente hecho: roberto es padre de joel.
         
     Ingresar el nombre del hecho 'z' (padre, madre, hijo, hija, etc): hijo
     Ingresa el nombre de la persona 'x' (Ex: 'x' es madre de 'y'): joel
     Ingresa el nombre la persona 'y' (Ex: 'x' es madre de 'y'): roberto
     Se agrego el siguiente hecho: joel es hijo de roberto.
-    ```
     
 ### 4. Salir
 Para salir del sistema.
