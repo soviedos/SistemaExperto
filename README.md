@@ -114,7 +114,7 @@ El contexto del problema a solucionar es el de la representacion de un  arbol ge
 
 3. Ejecuta el programa:
    ```bash
-   python sistema_experto.py
+   python codigo_principal_herencia.py
    ```
 
 4. Selecciona las opciones del menú según tus necesidades.
